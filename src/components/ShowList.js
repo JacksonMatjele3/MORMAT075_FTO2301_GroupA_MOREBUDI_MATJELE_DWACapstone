@@ -10,7 +10,7 @@ const ShowList = ({ shows, favorites, setFavorites }) => {
   const [sortOrder, setSortOrder] = useState('asc');
   
   // State to store the search query
-  //const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery]/*setSearchQuery]*/ = useState('');
 
   // Function to sort the shows based on the sorting order
   /*const sortShows = (order) => {
