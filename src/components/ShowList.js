@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { genreData } from '../data/genreData';
 import { formatUpdatedDate } from './dateUtils';
 import Fuse from 'fuse.js';
-import AudioPlayer from './AudioPlayer';
+/*import AudioPlayer from './AudioPlayer';*/
 
 // ShowList component
 const ShowList = ({ shows, favorites, setFavorites }) => {
@@ -10,10 +10,10 @@ const ShowList = ({ shows, favorites, setFavorites }) => {
   const [sortOrder, setSortOrder] = useState('asc');
   
   // State to store the search query
-  const [searchQuery, setSearchQuery] = useState('');
+  //const [searchQuery, setSearchQuery] = useState('');
 
   // Function to sort the shows based on the sorting order
-  const sortShows = (order) => {
+  /*const sortShows = (order) => {
     const sortedShows = [...shows];
     sortedShows.sort((a, b) => {
       if (order === 'asc') {
@@ -23,14 +23,14 @@ const ShowList = ({ shows, favorites, setFavorites }) => {
       }
     });
     return sortedShows;
-  };
+  };*/
 
   // Create a new instance of Fuse for searching shows by title
-  const fuse = new Fuse(shows, {
+  /*const fuse = new Fuse(shows, {
     keys: ['title'],
     includeScore: true,
     threshold: 0.4,
-  });
+  });*/
 
   // Filter and sort the shows based on the search query and sorting order
   const filteredShows = shows
