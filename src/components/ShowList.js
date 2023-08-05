@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { genreData } from '../data/genreData';
 import { formatUpdatedDate } from './dateUtils';
-import Fuse from 'fuse.js';
+//import Fuse from 'fuse.js';
 /*import AudioPlayer from './AudioPlayer';*/
 
 // ShowList component
