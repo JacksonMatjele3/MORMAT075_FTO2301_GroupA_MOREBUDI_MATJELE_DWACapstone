@@ -77,7 +77,7 @@ const ShowList = ({ shows, favorites, setFavorites }) => {
             <img src={show.image} alt={show.title} />
             <h3>{show.title}</h3>
             <p>{show.description}</p>
-            <h3>Season: {show.seasons}</h3>
+            <h3 className='text-bold underline'>Season: {show.seasons}</h3>
             <p>Last Updated: {formatUpdatedDate(show.updated)}</p>
             <p>Genres: {show.genres.map((genreId) => genreData[genreId]).join(', ')}</p>
             <button
