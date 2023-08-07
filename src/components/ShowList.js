@@ -8,6 +8,8 @@ import { formatUpdatedDate } from './dateUtils';
 const ShowList = ({ shows, favorites, setFavorites }) => {
   // State to keep track of the sorting order
   const [sortOrder, setSortOrder] = useState('asc');
+  const [selectedGenre, setSelectedGenre] = useState(''); // New state for selected genre
+
   
   // State to store the search query
   const [searchQuery]/*setSearchQuery]*/ = useState('');
@@ -23,10 +25,10 @@ const ShowList = ({ shows, favorites, setFavorites }) => {
       }
     });
     return sortedShows;
-  };*/
+  };
 
   // Create a new instance of Fuse for searching shows by title
-  /*const fuse = new Fuse(shows, {
+  const fuse = new Fuse(shows, {
     keys: ['title'],
     includeScore: true,
     threshold: 0.4,
@@ -35,6 +37,7 @@ const ShowList = ({ shows, favorites, setFavorites }) => {
   // Filter and sort the shows based on the search query and sorting order
   const filteredShows = shows
     .filter((show) => show.title.toLowerCase().includes(searchQuery.toLowerCase()))
+    .filter((show) => selectedGenre === '' || show.genres.includes(Number(selectedGenre))) // Apply genre filter
     .sort((a, b) => {
       if (sortOrder === 'asc') {
         return a.updated.localeCompare(b.updated);
@@ -53,6 +56,20 @@ const ShowList = ({ shows, favorites, setFavorites }) => {
         <label>Sort by Date Updated:</label>
         <button onClick={() => setSortOrder('asc')}>Ascending</button>
         <button onClick={() => setSortOrder('desc')}>Descending</button>
+      </div>
+      <div>
+        <label>Filter by Genre:</label>
+        <select
+          value={selectedGenre}
+          onChange={(e) => setSelectedGenre(e.target.value)}
+        >
+          <option value="">All Genres</option>
+          {Object.keys(genreData).map((genreId) => (
+            <option key={genreId} value={genreId}>
+              {genreData[genreId]}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="show-list">
         {filteredShows.map((show) => (
